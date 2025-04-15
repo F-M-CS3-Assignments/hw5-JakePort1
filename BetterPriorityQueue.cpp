@@ -1,37 +1,13 @@
 
-#include <queue> 
-#include <vector> 
-#include "Graph.h"
-#include <sstream>
+
+#include "BetterPriorityQueue.h"
 
 
-using namespace std; 
-
-struct BPQNode {
-	int pri = INT_MAX;
-	bool visited = false;
-	nodekey_t gnode = INVALID_NODE_KEY;
-	
-	bool operator<(const BPQNode &other) const {
-		return pri < other.pri;
-	}
-
-	bool operator>(const BPQNode &other) const {
-		return pri > other.pri;
-	}
-	
-	bool operator==(const BPQNode &other) const {
-		return this->gnode == other.gnode;
-	}
-};
 
 
 //a minimum item will be first (or ahread in prioirty) of a maximum item.
-class BetterPriorityQueue: public priority_queue<BPQNode, vector<BPQNode>, greater<BPQNode>> {
 
-
-    public:
-        bool contains(BPQNode node){ 
+        bool BetterPriorityQueue::Contains(BPQNode node){ 
             for(auto& n : this->c){
                 if(node == n){ 
                     return true; //returns true if node is in the vector
@@ -40,7 +16,7 @@ class BetterPriorityQueue: public priority_queue<BPQNode, vector<BPQNode>, great
             return false; //returns false otherwise. 
         }
 
-        bool update(BPQNode node){ 
+        bool BetterPriorityQueue::Update(BPQNode node){ 
             bool isInQueue = false; 
 
             for(auto& n : this->c){  //iterates through the nodes in the que 
@@ -54,7 +30,7 @@ class BetterPriorityQueue: public priority_queue<BPQNode, vector<BPQNode>, great
             return isInQueue; 
         }
 
-        string ToString(){ 
+        string BetterPriorityQueue::ToString(){ 
             ostringstream output; //creates an output stream to store string values in 
 
             output << "["; //strats the bracket for formatting 
@@ -69,12 +45,9 @@ class BetterPriorityQueue: public priority_queue<BPQNode, vector<BPQNode>, great
             return output.str(); //returns the string version of the output stream 
         }
 
-        
-        static string BPQNodeToString(BPQNode node){ 
+
+        string BetterPriorityQueue::BPQNodeToString(const BPQNode node){ 
             ostringstream output; //creates an output stream to store string values in 
             output << "(" << node.gnode << ", pri: " << node.pri << ")";
             return output.str(); 
         }
-
-
-};
