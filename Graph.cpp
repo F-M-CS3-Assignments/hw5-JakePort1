@@ -7,16 +7,12 @@
 using namespace std;
 
 
-
-
-
-
 // This method is not part of the Graph class / header on purpose
 const GraphEdge* findExistingEdge(nodekey_t gnFrom, nodekey_t gnTo, vector<vector<GraphEdge *>> adjList)
 {
 	if(adjList.size() == 0)
 	{
-		return nullptr;
+		return nullptr;  //returns nullptr if there is nothign int he graph 
 	}
 
 
@@ -28,7 +24,8 @@ const GraphEdge* findExistingEdge(nodekey_t gnFrom, nodekey_t gnTo, vector<vecto
 			GraphEdge *cur = row.at(i);
 
 			// It might make sense for there to be an == operator overload in the GraphEdge struct
-			// but adding methods to a struct feels so _wrong_ to me!
+			// but adding methods to a struct feels so _wrong_ to me! ?????
+
 			if(cur->from == gnFrom && cur->to == gnTo)
 			{
 				return cur;
@@ -38,6 +35,7 @@ const GraphEdge* findExistingEdge(nodekey_t gnFrom, nodekey_t gnTo, vector<vecto
 
 	return nullptr;
 }
+
 
 // This method is not part of the Graph class / header on purpose
 // This should probably be a method in the GraphEdge struct
@@ -63,10 +61,10 @@ void Graph::AddNode(nodekey_t key)
 	nodes.push_back(key);
 	vector <GraphEdge*> *newRow = new vector<GraphEdge*>;
 	adjList.push_back(*newRow);
-	delete newRow; // ?
+	delete newRow; 
 }
 
-
+ 
 
 
 const GraphEdge *Graph::AddEdge(nodekey_t gnFrom, nodekey_t gnTo, unsigned int w)
@@ -90,11 +88,17 @@ const GraphEdge *Graph::AddEdge(nodekey_t gnFrom, nodekey_t gnTo, unsigned int w
 		throw invalid_argument("No such node: " + to_string(gnTo));
 	}
 
-	GraphEdge *ge = new GraphEdge;
+	GraphEdge *ge = new GraphEdge{gnFrom,gnTo,w}; //changed to include the arguments set above, i think this is all it needs
+
+	//find the index of the from vector, using find() from 
+	//https://stackoverflow.com/questions/15099707/how-to-get-position-of-a-certain-element-in-strings-vector-to-use-it-as-an-inde
+	auto it = find(nodes.begin(), nodes.end(), gnFrom);
+	size_t fromIndex = distance(nodes.begin(), it);
+
+	adjList.at(fromIndex).push_back(ge); // will add the edge to the vector corresponding to the right key (node).
 
 	// TODO:
 	// Do stuff here?  IDK what though
-
 	const GraphEdge *response = ge; // this helps the compiler go
 	return response;
 }
@@ -104,6 +108,14 @@ bool Graph::IsPresent(nodekey_t key) const
 {
 	// TODO:
 	// iterate through this->nodes and look for one that matches key
+
+	for(nodekey_t testKey : this->nodes){ 
+		if(testKey == key){  //will return true if the key is found in the list of all nodes 
+			return true; 
+		}
+	}
+
+	return false; 
 }
 
 
@@ -126,16 +138,29 @@ set<const GraphEdge*> Graph::GetOutwardEdgesFrom(nodekey_t node) const
 	// TODO:
 	// iterate over this->adjList.at(idx); and find nodes that match the given node
 	// in their "from" field, put those nodes in result
-
-
+	
+	//this will find all the outghoing edges for the given node at index idx, and push back the outwardd connections. 
+	for(GraphEdge *const edge : adjList.at(idx)){
+		result.insert(edge);
+	}
 	return result;
 }
 
+
+
+
  set<nodekey_t> Graph::GetNodes() const 
 {
-	// TODOL
+	// TODO:
 	// iterate of this->nodes, accumulate into a set<nodekey_t> and return it
+	set<nodekey_t> setOfNodes; 
+	for(nodekey_t node : this->nodes){ 
+		setOfNodes.insert(node); 
+	}
+	return setOfNodes;
 }
+
+
 
 
 size_t Graph::Order() const 
@@ -210,5 +235,14 @@ Graph::~Graph() {
 	// TODO:
 	// Right now the memory leaks are bad, I need to
 	// implement something here to fix it
+	//changed this to auto instead of vector<nodekey_t> and it works, not sure why.
+	for(auto& vec : adjList){ 
+		for(GraphEdge* edge : vec){ 
+			delete edge;
+		}
+		vec.clear(); 
+	}
+	adjList.clear();  //gets rid of adjList and nodes. 
+	nodes.clear(); 
 }
 
