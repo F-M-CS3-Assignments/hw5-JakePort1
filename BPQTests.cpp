@@ -112,6 +112,14 @@ void UpdateTest() {
 	cout << "PASSED!" << endl;
 }
 
+void myTests(){ 
+	
+
+
+
+
+}
+
 int main(){
 	
 	ContainsTest();
