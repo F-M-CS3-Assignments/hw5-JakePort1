@@ -1,0 +1,36 @@
+
+
+Time Log: 
+    2:47 Started on Graph.cpp
+    3:10, read through code, added nodes and adjList, and implemented isPresent()
+    3:25, finished AddEdge (I think)
+    3:34, implemented GetOutwardEdges, not entirely sure I did it right. 
+    3:45, finished implemetnion, but havn't done tests or the other things i feel like the comments are nudging you to do. 
+    
+
+
+
+
+
+
+ToDo: 
+
+
+Graph: 
+
+    The graph.h has lots of public members, so mostly i will be adding to the private
+    members, or maybe a little to the public. 
+
+    go in and fix up graphattemt.cpp (rename to graph), this is partially written code
+    with a todo 
+
+    then test this on the graphtests.cpp file AND add more tests
+
+
+Priority Queue: 
+
+
+
+
+
+
