@@ -19,12 +19,13 @@
         bool BetterPriorityQueue::Update(BPQNode node){ 
             bool isInQueue = false; 
 
-            for(auto& n : this->c){  //iterates through the nodes in the que 
-                if(n == node){ //will only update the value if the node is in the queue and if its prioirty is lower than before. 
+            for(auto& n : this->c){  //iterates through the nodes in the queue
+                if(n.gnode == node.gnode){ //will only update the value if the node is in the queue and if its prioirty is lower than before. 
                     if(node.pri < n.pri){ 
                         n.pri = node.pri; 
                         isInQueue = true; 
-                    }
+                        make_heap(this->c.begin(), this->c.end(), this->comp); // this reorganizes the binary heap so that its 
+                    }                                                          // not invalid. 
                 }
             }
             return isInQueue; 

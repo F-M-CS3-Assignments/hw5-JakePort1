@@ -94,7 +94,7 @@ void UpdateTest() {
 	
 	// Test 2: attempt to update with an empty / undefined input
 	BPQNode negative;
-	assert(q.Update(negative) == false);
+	assert(q.Update(negative) == false);           
 	cout << "q after test 2: " << q.ToString() << endl;
 	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);
 	
