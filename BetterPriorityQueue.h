@@ -15,6 +15,11 @@ struct BPQNode {
 	int pri = INT_MAX;
 	bool visited = false;
 	nodekey_t gnode = INVALID_NODE_KEY;
+    //maybe add distance here, with it initalized at MAX INT, or 0 for start node.
+    BPQNode* previousNode = nullptr; //will use this to refer to the last node; 
+    int distance = ULLONG_MAX; //representativce of infinity: 
+
+
 	
 	bool operator<(const BPQNode &other) const {
 		return pri < other.pri;
