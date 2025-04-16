@@ -4,6 +4,8 @@
 #include <iostream>
 #include <set>
 #include <climits>
+#include <vector> 
+
 
 
 using namespace std;
