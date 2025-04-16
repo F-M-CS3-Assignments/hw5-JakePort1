@@ -5,9 +5,17 @@
 #include <vector> 
 
 
-//TIME COMPLEXITY ANSWER: 
+/*
+TIME COMPLEXITY ANSWER: 
 
+Dijkstras algorithm will grow in complexity the more edges a graph has and the more vertices a graph has. Because it must visit 
+every node at some point, this will be a constat. However, it does not need to visit every edge, so as you add more edges the 
+algorithm doesn't neccisarly grow more complex at a constant rate. This means that the time complexity of the exges is log(Number of edges )
+and the time complexty of the verticies is just Verticies, so: 
 
+time complexity is: O(vertices x log(edges)), or )
+
+*/
 
 int dijkstra(nodekey_t start, nodekey_t end, const Graph *g){
 

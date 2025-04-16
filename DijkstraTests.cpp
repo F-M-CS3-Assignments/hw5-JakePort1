@@ -72,6 +72,56 @@ void MoreDijkstraTests(){
 
 	// Your code goes here!
 
+	Graph *graph1 = new Graph();
+	
+	graph1->AddNode(1);
+	graph1->AddNode(3);
+	graph1->AddNode(4);
+	graph1->AddNode(9);
+
+	graph1->AddEdge(3, 1, 3);
+	graph1->AddEdge(3, 4, 8);
+	graph1->AddEdge(3, 9, 2);
+	graph1->AddEdge(1, 4, 1);
+	graph1->AddEdge(4, 9, 5);
+
+	int answer = 4; 
+	int result = dijkstra(3,4,graph1);
+
+	assert(answer == result ); 
+
+	Graph *graph2 = new Graph; 
+	graph2->AddNode(1);
+	graph2->AddNode(2);
+	graph2->AddNode(3);
+	graph2->AddNode(4);
+
+
+	graph2->AddEdge(1, 2, 2223);
+	graph2->AddEdge(2, 3, 333333);
+	graph2->AddEdge(3, 4, 999999);
+	graph2->AddEdge(1,4,1); 
+
+	assert(dijkstra(1,4,graph2)== 1); 
+	
+
+	cout << "new tests passed";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	cout << "DONE Deep Testing Dijkstra Algorithm" << endl;
 }
 

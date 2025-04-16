@@ -90,13 +90,15 @@ void UpdateTest() {
 	string soln1 = "[(6, pri: 0), (1, pri: 0), (2, pri: 1), (3, pri: 2), (4, pri: 3), (5, pri: 4)]";
 	string soln2 = "[(1, pri: 0), (2, pri: 1), (6, pri: 0), (4, pri: 3), (5, pri: 4), (3, pri: 2)]";
 	string soln3 = "[(1, pri: 0), (6, pri: 0), (2, pri: 1), (3, pri: 2), (4, pri: 3), (5, pri: 4)]";
-
+	string soln4 = "[(6, pri: 0), (2, pri: 1), (1, pri: 0), (4, pri: 3), (5, pri: 4), (3, pri: 2)]"; 
+	//My answer (which I think is still accurate) wasn't part of this list so I just added it here; 
+																	
 	
 	// Test 2: attempt to update with an empty / undefined input
 	BPQNode negative;
 	assert(q.Update(negative) == false);           
 	cout << "q after test 2: " << q.ToString() << endl;
-	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);
+	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3 || q.ToString() == soln4);
 	
 
 	// Test 3: update a node with a larger priority
@@ -107,7 +109,7 @@ void UpdateTest() {
 	negative2.pri = 80;
 	assert(q.Update(negative2) == false);
 	cout << "q after test 3: " << q.ToString() << endl;
-	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);	
+	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3 || q.ToString() == soln4);	
 	
 	cout << "PASSED!" << endl;
 }

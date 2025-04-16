@@ -25,7 +25,7 @@
                         n.pri = node.pri; 
                         isInQueue = true; 
                         make_heap(this->c.begin(), this->c.end(), this->comp); // this reorganizes the binary heap so that its 
-                    }                                                          // not invalid. 
+                    }                                                           // not invalid. 
                 }
             }
             return isInQueue; 
