@@ -1,6 +1,8 @@
 #include "Dijkstra.h"
 
-
+#include "Graph.h"
+#include "BetterPriorityQueue.h"
+#include <vector> 
 
 
 //TIME COMPLEXITY ANSWER: 
@@ -67,8 +69,7 @@ int dijkstra(nodekey_t start, nodekey_t end, const Graph *g){
             altPathNode.gnode = edge->to;
             unvisited.Update(altPathNode); //this will only update if the alternate path is smaller. 
         }
-            
-
+        
 
         //if its at the same node as the end node, it will return that distanc 
         if (currNode.gnode == end) {
@@ -79,8 +80,6 @@ int dijkstra(nodekey_t start, nodekey_t end, const Graph *g){
         currNode.visited = true; 
         visited.insert(currNode.gnode); //use this to track whats visited more easily 
     }
-
-
 
     return 0;
 };

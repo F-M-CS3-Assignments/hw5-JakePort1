@@ -12,7 +12,7 @@ using namespace std;
 
 //this was the code given in the .txt file. 
 struct BPQNode {
-	int pri = INT_MAX;
+    unsigned long long pri = ULLONG_MAX;
 	bool visited = false;
 	nodekey_t gnode = INVALID_NODE_KEY;
     //maybe add distance here, with it initalized at MAX INT, or 0 for start node.

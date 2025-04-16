@@ -1,23 +1,12 @@
 
 
-Time Log: 
-    2:47 Started on Graph.cpp
-    3:10, read through code, added nodes and adjList, and implemented isPresent()
-    3:25, finished AddEdge (I think)
-    3:34, implemented GetOutwardEdges, not entirely sure I did it right. 
-    3:45, finished implemetnion, but havn't done tests or the other things i feel like the comments are nudging you to do. 
-    4:01, Graph compiles and passes tests in GraphTests.cpp. Moving onto priorityQueue 
-    4:53, finished implmentation of BPQ, moving onto to testing. 
-
-
-
-
 
 
 
 ToDo: 
     - add more tests for the graph function, 
     log into fandm server to test if it works there but also the use valgrind 
+    go back and test this again on line 99: assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);
 
 
 
